@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.MainActivity">
+
+    <TextView
+        android:id="@+id/textLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/outside_margin"
+        android:layout_marginTop="@dimen/outside_margin"
+        android:text="@string/text"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_label_size"
+        app:layout_constraintEnd_toEndOf="@+id/filterLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/filterLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/outside_margin"
+        android:layout_marginTop="@dimen/outside_margin"
+        android:text="@string/filter"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_label_size"
+        app:layout_constraintEnd_toEndOf="@+id/resultlabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textLabel" />
+
+    <TextView
+        android:id="@+id/resultlabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/outside_margin"
+        android:layout_marginTop="@dimen/outside_margin"
+        android:text="@string/result"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_label_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/filterLabel" />
+
+    <EditText
+        android:id="@+id/textInputView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/outside_margin"
+        android:layout_marginEnd="@dimen/outside_margin"
+        android:importantForAutofill="no"
+        android:inputType="none"
+        android:singleLine="true"
+        android:textSize="@dimen/text_label_size"
+        app:layout_constraintBottom_toBottomOf="@+id/textLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textLabel"
+        app:layout_constraintTop_toTopOf="@+id/textLabel"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/textFilterView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/outside_margin"
+        android:layout_marginEnd="@dimen/outside_margin"
+        android:importantForAutofill="no"
+        android:inputType="none"
+        android:singleLine="true"
+        android:textSize="@dimen/text_label_size"
+        app:layout_constraintBottom_toBottomOf="@+id/filterLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textLabel"
+        app:layout_constraintTop_toTopOf="@+id/filterLabel"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/resultTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/outside_margin"
+        android:layout_marginEnd="@dimen/outside_margin"
+        android:singleLine="true"
+        android:textSize="@dimen/text_label_size"
+        app:layout_constraintBottom_toBottomOf="@+id/resultlabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/resultlabel"
+        app:layout_constraintTop_toTopOf="@+id/resultlabel" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
