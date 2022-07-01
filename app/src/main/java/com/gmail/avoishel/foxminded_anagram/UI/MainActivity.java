@@ -1,6 +1,6 @@
 package com.gmail.avoishel.foxminded_anagram.UI;
 
-import static com.gmail.avoishel.foxminded_anagram.Utils.Utils.CreateAnagram;
+import static com.gmail.avoishel.foxminded_anagram.Utils.Utils.createAnagram;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                binding.resultTextView.setText(CreateAnagram(s.toString(),binding.textFilterView.getText().toString()));
+                binding.resultTextView.setText(createAnagram(s.toString(),binding.textFilterView.getText().toString()));
             }
         });
 
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                binding.resultTextView.setText(CreateAnagram(binding.textInputView.getText().toString(),s.toString()));
+                binding.resultTextView.setText(createAnagram(binding.textInputView.getText().toString(),s.toString()));
             }
         });
     }
