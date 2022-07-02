@@ -16,23 +16,25 @@ public class Utils {
     private static String overTurnAWord(String word, String filter){
 
         char[] wChar = word.toCharArray();
-        int lastPosition = word.length();
+        int last = word.length();
+        int first = 0;
 
-        for (int i=0; i<word.length(); i++){
+        while (first < last){
 
-            if (filter.indexOf(wChar[i])<0) {
-                for (int p = lastPosition-1; p > i; p--) {    // --- find symbol from end of the word
-                    if (filter.indexOf(wChar[p]) < 0 || filter.isEmpty()) {
-                        lastPosition = p;
+            if (filter.indexOf(wChar[first])<0) {
+                for (int lastLoop = last-1; lastLoop > first; lastLoop--) {    // --- find symbol from end of the word
+                    if (filter.indexOf(wChar[lastLoop]) < 0 || filter.isEmpty()) {
+                        last = lastLoop;
 
-                        char buffer = wChar[p];
-                        wChar[p] = wChar[i];
-                        wChar[i] = buffer;
+                        char buffer = wChar[lastLoop];
+                        wChar[lastLoop] = wChar[first];
+                        wChar[first] = buffer;
 
                         break;
                     }
                 }
             }
+            first++;
         }
 
         return String.valueOf(wChar);
