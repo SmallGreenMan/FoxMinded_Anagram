@@ -11,7 +11,7 @@ import android.view.View;
 
 import com.gmail.avoishel.foxminded_anagram.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements TextWatcher {
 
     private ActivityMainBinding binding;
 
@@ -22,30 +22,20 @@ public class MainActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        binding.textInputView.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {            }
+        binding.textInputView.addTextChangedListener(this);
+        binding.textFilterView.addTextChangedListener(this);
+    }
 
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {            }
+    @Override
+    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
 
-            @Override
-            public void afterTextChanged(Editable s) {
-                binding.resultTextView.setText(createAnagram(s.toString(),binding.textFilterView.getText().toString()));
-            }
-        });
+    @Override
+    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
 
-        binding.textFilterView.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                binding.resultTextView.setText(createAnagram(binding.textInputView.getText().toString(),s.toString()));
-            }
-        });
+    @Override
+    public void afterTextChanged(Editable editable) {
+        binding.resultTextView.setText(createAnagram(
+                binding.textInputView.getText().toString(),
+                binding.textFilterView.getText().toString()));
     }
 }

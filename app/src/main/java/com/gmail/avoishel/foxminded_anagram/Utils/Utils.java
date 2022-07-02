@@ -22,7 +22,7 @@ public class Utils {
 
             if (filter.indexOf(wChar[i])<0) {
                 for (int p = lastPosition-1; p > i; p--) {    // --- find symbol from end of the word
-                    if (filter.indexOf(wChar[p]) < 0) {
+                    if (filter.indexOf(wChar[p]) < 0 || filter.isEmpty()) {
                         lastPosition = p;
 
                         char buffer = wChar[p];
