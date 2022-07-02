@@ -4,28 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.MainActivity">
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.05" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+    tools:context=".ui.MainActivity">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideStartEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.35" />
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideEndEditText"
@@ -34,75 +28,46 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.95" />
 
-    <TextView
-        android:id="@+id/textLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/text"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_label_size"
-        app:layout_constraintBottom_toTopOf="@id/filterLabel"
-        app:layout_constraintStart_toStartOf="@id/guideLabel"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/filterLabel"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/filter"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_label_size"
-        app:layout_constraintBottom_toTopOf="@id/resultLabel"
-        app:layout_constraintEnd_toEndOf="@id/resultLabel"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@id/guideLabel"
-        app:layout_constraintTop_toBottomOf="@id/textLabel" />
-
-    <TextView
-        android:id="@+id/resultLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/result"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_label_size"
-        app:layout_constraintBottom_toBottomOf="@id/guideButton"
-        app:layout_constraintStart_toStartOf="@+id/guideLabel"
-        app:layout_constraintTop_toBottomOf="@id/filterLabel" />
-
     <EditText
         android:id="@+id/textInputView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:hint="@string/enter_text"
         android:importantForAutofill="no"
         android:inputType="none"
         android:singleLine="true"
         android:textSize="@dimen/text_label_size"
-        app:layout_constraintBaseline_toBaselineOf="@id/textLabel"
+        app:layout_constraintBottom_toTopOf="@+id/textFilterView"
         app:layout_constraintEnd_toEndOf="@+id/guideEndEditText"
         app:layout_constraintStart_toEndOf="@id/guideStartEditText"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/textFilterView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:hint="@string/enter_filter"
         android:importantForAutofill="no"
         android:inputType="none"
         android:singleLine="true"
         android:textSize="@dimen/text_label_size"
-        app:layout_constraintBaseline_toBaselineOf="@id/filterLabel"
+        app:layout_constraintBottom_toTopOf="@+id/resultTextView"
         app:layout_constraintEnd_toEndOf="@+id/guideEndEditText"
         app:layout_constraintStart_toEndOf="@id/guideStartEditText"
+        app:layout_constraintTop_toBottomOf="@+id/textInputView"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/resultTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:hint="@string/result_text"
         android:singleLine="true"
         android:textSize="@dimen/text_label_size"
-        app:layout_constraintBaseline_toBaselineOf="@id/resultLabel"
+        app:layout_constraintBottom_toBottomOf="@+id/guideBottom"
         app:layout_constraintEnd_toEndOf="@+id/guideEndEditText"
-        app:layout_constraintStart_toEndOf="@id/guideStartEditText" />
+        app:layout_constraintStart_toEndOf="@id/guideStartEditText"
+        app:layout_constraintTop_toBottomOf="@+id/textFilterView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,6 @@
-package com.gmail.avoishel.foxminded_anagram.UI;
+package com.gmail.avoishel.foxminded_anagram.ui;
 
-import static com.gmail.avoishel.foxminded_anagram.Utils.Utils.createAnagram;
+import static com.gmail.avoishel.foxminded_anagram.utils.Utils.createAnagram;
 
 import androidx.appcompat.app.AppCompatActivity;
 

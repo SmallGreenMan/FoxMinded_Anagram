@@ -1,9 +1,8 @@
 <resources>
-    <string name="app_name">FoxMinded_Anagram</string>
+    <string name="app_name">Anagram</string>
 
-    <string name="text">Text :</string>
-    <string name="filter">Filter :</string>
-    <string name="result">Result :</string>
-
+    <string name="enter_text">Enter text</string>
+    <string name="enter_filter">Enter filter</string>
+    <string name="result_text">Result</string>
 
 </resources>

@@ -1,4 +1,4 @@
-package com.gmail.avoishel.foxminded_anagram.Utils;
+package com.gmail.avoishel.foxminded_anagram.utils;
 
 public class Utils {
 
