@@ -21,28 +21,24 @@ public class Utils {
 
         String alphabeticCharacters = "\\w";
         char[] wChar = word.toCharArray();
-        int last = word.length();
+        int last = word.length()-1;
         int first = 0;
 
         while (first < last){
-
             if (ifCharIsNonAlphabetic(filter, wChar[first])){
-                for (int lastLoop = last-1; lastLoop > first; lastLoop--) {    // --- find symbol from end of the word
+                if (ifCharIsNonAlphabetic(filter, wChar[last])){
 
-                    if (ifCharIsNonAlphabetic(filter, wChar[lastLoop])){
+                    char buffer = wChar[last];
+                    wChar[last] = wChar[first];
+                    wChar[first] = buffer;
 
-                        last = lastLoop;
-
-                        char buffer = wChar[lastLoop];
-                        wChar[lastLoop] = wChar[first];
-                        wChar[first] = buffer;
-
-                        break;
-                    }
+                    first++;
                 }
-            }
+                last--;
 
-            first++;
+            } else {
+                first++;
+            }
         }
 
         return String.valueOf(wChar);
