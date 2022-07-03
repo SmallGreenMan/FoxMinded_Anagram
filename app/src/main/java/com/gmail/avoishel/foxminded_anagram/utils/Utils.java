@@ -15,7 +15,6 @@ public class Utils {
 
     private static String overTurnAWord(String word, String filter){
 
-        String alphabeticCharacters = "\\w";
         char[] wChar = word.toCharArray();
         int last = word.length()-1;
         int first = 0;
@@ -39,7 +38,7 @@ public class Utils {
 
     private static Boolean isFiltered(String filter, char item){
         return (filter.isEmpty())
-                    ?   Character.isLetter(item)
+                    ? !Character.isLetter(item)
                     : filter.indexOf(item) < 0;
     }
 }
