@@ -50,7 +50,7 @@ public class Utils {
 
     private static Boolean ifCharIsNonAlphabetic(String filter, char item){
         return (filter.isEmpty())
-                    ? !(Pattern.matches("[\\W\\d]",String.valueOf(item)))
-                    : (filter.indexOf(item) < 0 );
+                    ? Character.isLetter(item)
+                    : filter.indexOf(item) < 0;
     }
 }
