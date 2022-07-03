@@ -1,9 +1,5 @@
 package com.gmail.avoishel.foxminded_anagram.utils;
 
-import android.util.Log;
-
-import java.util.regex.Pattern;
-
 public class Utils {
 
     public static String createAnagram(String text, String filter){
@@ -25,28 +21,25 @@ public class Utils {
         int first = 0;
 
         while (first < last){
-            if (ifCharIsNonAlphabetic(filter, wChar[first])){
-                if (ifCharIsNonAlphabetic(filter, wChar[last])){
-
-                    char buffer = wChar[last];
-                    wChar[last] = wChar[first];
-                    wChar[first] = buffer;
-
-                    first++;
-                }
-                last--;
-
-            } else {
+            if (isFiltered(filter, wChar[first])){
                 first++;
+            } else if (isFiltered(filter, wChar[last])){
+                last--;
+            } else {
+                char buffer = wChar[last];
+                wChar[last] = wChar[first];
+                wChar[first] = buffer;
+                first++;
+                last--;
             }
         }
 
         return String.valueOf(wChar);
     }
 
-    private static Boolean ifCharIsNonAlphabetic(String filter, char item){
+    private static Boolean isFiltered(String filter, char item){
         return (filter.isEmpty())
-                    ? Character.isLetter(item)
+                    ?   Character.isLetter(item)
                     : filter.indexOf(item) < 0;
     }
 }
