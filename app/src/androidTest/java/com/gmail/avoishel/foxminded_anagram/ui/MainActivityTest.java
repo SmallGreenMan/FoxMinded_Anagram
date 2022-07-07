@@ -8,6 +8,7 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.clearText;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -32,12 +33,21 @@ public class MainActivityTest {
 
     @Test
     public void checkAnagramLogic() {
-        String inputText = "Foxminded cool 24/7";
-        String filterText = "xl";
-        String expectedText = "dexdnimoF oocl 7/42";
+        String[][] testData = new String[][]
+                {    // - input                - filter - output
+                        {"Foxminded cool 24/7", "",     "dednimxoF looc 24/7"},
+                        {"abcd efgh",           "",     "dcba hgfe"},
+                        {"a1bcd efg!h",         "",     "d1cba hgf!e"},
 
-        onView(withId(R.id.textInputView)).perform(typeText(inputText));
-        onView(withId(R.id.textFilterView)).perform(typeText(filterText));
-        onView(withId(R.id.resultTextView)).check(matches(withText(expectedText)));
+                        {"Foxminded cool 24/7", "xl",   "dexdnimoF oocl 7/42"},
+                        {"abcd efgh",           "xl",   "dcba hgfe"},
+                        {"a1bcd efg!h",         "xl",   "dcb1a h!gfe"},
+                };
+
+        for (String[] data : testData) {
+            onView(withId(R.id.textInputView)).perform(clearText()).perform(typeText(data[0]));
+            onView(withId(R.id.textFilterView)).perform(clearText()).perform(typeText(data[1]));
+            onView(withId(R.id.resultTextView)).check(matches(withText(data[2])));
+        }
     }
 }

@@ -5,94 +5,41 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import java.io.IOException;
+
 public class UtilsTest {
 
     @Test
-    public void anagramWithEmptyFilter_0(){
-        String input = "";
-        String filter = "";
-        String expected = "";
+    public void anagramLogic(){
+        String[][] testData = new String[][]
+                {    // - input                - filter - output
+                        {"",                    "",     ""},
+                        {"Foxminded cool 24/7", "",     "dednimxoF looc 24/7"},
+                        {"abcd efgh",           "",     "dcba hgfe"},
+                        {"a1bcd efg!h",         "",     "d1cba hgf!e"},
 
-        String output = createAnagram(input, filter);
+                        {"",                    "xl",   ""},
+                        {"Foxminded cool 24/7", "xl",   "dexdnimoF oocl 7/42"},
+                        {"abcd efgh",           "xl",   "dcba hgfe"},
+                        {"a1bcd efg!h",         "xl",   "dcb1a h!gfe"}
+                };
 
-        assertEquals(expected, output);
+        for (String[] data : testData) {
+            assertEquals(data[0], createAnagram(data[2], data[1]));
+        }
     }
 
-    @Test
-    public void anagramWithEmptyFilter_1(){
-        String input = "Foxminded cool 24/7";
-        String filter = "";
-        String expected = "dednimxoF looc 24/7";
+    @Test(expected = AssertionError.class)
+    public void anagramLogicWithException(){
+        String[][] testData = new String[][]
+                {    // - input                - filter - output
+                        {null,                 "",      ""},
+                        {"",                   null,    ""}
+                };
 
-        String output = createAnagram(input, filter);
-
-        assertEquals(expected, output);
+        for (String[] data : testData) {
+            assertEquals(data[0], createAnagram(data[2], data[1]));
+        }
     }
 
-    @Test
-    public void anagramWithEmptyFilter_2(){
-        String input = "abcd efgh";
-        String filter = "";
-        String expected = "dcba hgfe";
-
-        String output = createAnagram(input, filter);
-
-        assertEquals(expected, output);
-    }
-
-    @Test
-    public void anagramWithEmptyFilter_3(){
-        String input = "a1bcd efg!h";
-        String filter = "";
-        String expected = "d1cba hgf!e";
-
-        String output = createAnagram(input, filter);
-
-        assertEquals(expected, output);
-    }
-
-
-    @Test
-    public void anagramWithExtendFilter_0(){
-        String input = "";
-        String filter = "xl";
-        String expected = "";
-
-        String output = createAnagram(input, filter);
-
-        assertEquals(expected, output);
-    }
-
-    @Test
-    public void anagramWithExtendFilter_1(){
-        String input = "Foxminded cool 24/7";
-        String filter = "xl";
-        String expected = "dexdnimoF oocl 7/42";
-
-        String output = createAnagram(input, filter);
-
-        assertEquals(expected, output);
-    }
-
-    @Test
-    public void anagramWithExtendFilter_2(){
-        String input = "abcd efgh";
-        String filter = "xl";
-        String expected = "dcba hgfe";
-
-        String output = createAnagram(input, filter);
-
-        assertEquals(expected, output);
-    }
-
-    @Test
-    public void anagramWithExtendFilter_3(){
-        String input = "a1bcd efglh";
-        String filter = "xl";
-        String expected = "dcb1a hgfle";
-
-        String output = createAnagram(input, filter);
-
-        assertEquals(expected, output);
-    }
 }

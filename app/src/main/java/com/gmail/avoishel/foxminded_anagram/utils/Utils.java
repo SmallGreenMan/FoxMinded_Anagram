@@ -39,6 +39,6 @@ public class Utils {
     private static Boolean isFiltered(String filter, char item){
         return (filter.isEmpty())
                     ? !Character.isLetter(item)
-                    : !(filter.indexOf(item) < 0);
+                    : filter.indexOf(item) >= 0;
     }
 }
