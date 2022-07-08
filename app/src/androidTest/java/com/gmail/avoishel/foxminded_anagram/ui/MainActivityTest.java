@@ -20,8 +20,6 @@ import com.gmail.avoishel.foxminded_anagram.R;
 @RunWith(AndroidJUnit4.class)
 public class MainActivityTest {
 
-    private int numberOfTestData = 8;
-
     private String[] input = new String[] {
             "",
             "Foxminded cool 24/7",
@@ -62,7 +60,7 @@ public class MainActivityTest {
     @Test
     public void checkAnagramLogic() {
 
-        for (int i = 1; i < numberOfTestData; i++) {
+        for (int i = 1; i < input.length; i++) {
             onView(withId(R.id.textInputView)).perform(clearText()).perform(typeText(input[i]));
             onView(withId(R.id.textFilterView)).perform(clearText()).perform(typeText(filter[i]));
             onView(withId(R.id.resultTextView)).check(matches(withText(output[i])));
