@@ -5,41 +5,55 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import java.io.IOException;
-
 public class UtilsTest {
+
+    private int numberOfTestData = 8;
+
+    private String[] input = new String[] {
+            "",
+            "Foxminded cool 24/7",
+            "abcd efgh",
+            "a1bcd efg!h",
+            "",
+            "Foxminded cool 24/7",
+            "abcd efgh",
+            "a1bcd efg!h"
+    };
+
+    private String[] filter = new String[]{
+            "",
+            "",
+            "",
+            "",
+            "xl",
+            "xl",
+            "xl",
+            "xl"
+    };
+
+    private String[] output = new String[]{
+            "",
+            "dednimxoF looc 24/7",
+            "dcba hgfe",
+            "d1cba hgf!e",
+            "",
+            "dexdnimoF oocl 7/42",
+            "dcba hgfe",
+            "dcb1a h!gfe"
+    };
+
 
     @Test
     public void anagramLogic(){
-        String[][] testData = new String[][]
-                {    // - input                - filter - output
-                        {"",                    "",     ""},
-                        {"Foxminded cool 24/7", "",     "dednimxoF looc 24/7"},
-                        {"abcd efgh",           "",     "dcba hgfe"},
-                        {"a1bcd efg!h",         "",     "d1cba hgf!e"},
-
-                        {"",                    "xl",   ""},
-                        {"Foxminded cool 24/7", "xl",   "dexdnimoF oocl 7/42"},
-                        {"abcd efgh",           "xl",   "dcba hgfe"},
-                        {"a1bcd efg!h",         "xl",   "dcb1a h!gfe"}
-                };
-
-        for (String[] data : testData) {
-            assertEquals(data[0], createAnagram(data[2], data[1]));
+        for (int i = 1; i < numberOfTestData; i++) {
+            assertEquals(input[i], createAnagram(output[i], filter[i]));
         }
     }
 
     @Test(expected = AssertionError.class)
     public void anagramLogicWithException(){
-        String[][] testData = new String[][]
-                {    // - input                - filter - output
-                        {null,                 "",      ""},
-                        {"",                   null,    ""}
-                };
-
-        for (String[] data : testData) {
-            assertEquals(data[0], createAnagram(data[2], data[1]));
-        }
+        assertEquals(null, createAnagram("", ""));
+        assertEquals("", createAnagram(null, ""));
     }
 
 }

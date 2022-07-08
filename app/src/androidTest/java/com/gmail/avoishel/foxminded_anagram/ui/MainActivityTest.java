@@ -11,7 +11,7 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.clearText;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
@@ -20,34 +20,52 @@ import com.gmail.avoishel.foxminded_anagram.R;
 @RunWith(AndroidJUnit4.class)
 public class MainActivityTest {
 
+    private int numberOfTestData = 8;
+
+    private String[] input = new String[] {
+            "",
+            "Foxminded cool 24/7",
+            "abcd efgh",
+            "a1bcd efg!h",
+            "",
+            "Foxminded cool 24/7",
+            "abcd efgh",
+            "a1bcd efg!h"
+    };
+
+    private String[] filter = new String[]{
+            "",
+            "",
+            "",
+            "",
+            "xl",
+            "xl",
+            "xl",
+            "xl"
+    };
+
+    private String[] output = new String[]{
+            "",
+            "dednimxoF looc 24/7",
+            "dcba hgfe",
+            "d1cba hgf!e",
+            "",
+            "dexdnimoF oocl 7/42",
+            "dcba hgfe",
+            "dcb1a h!gfe"
+    };
+
     @Rule
     public ActivityScenarioRule<MainActivity> activityRule =
             new ActivityScenarioRule<MainActivity>(MainActivity.class);
 
     @Test
-    public void allUiElementsIsDisplayed() {
-        onView(withId(R.id.textInputView)).check(matches(isDisplayed()));
-        onView(withId(R.id.textFilterView)).check(matches(isDisplayed()));
-        onView(withId(R.id.resultTextView)).check(matches(isDisplayed()));
-    }
-
-    @Test
     public void checkAnagramLogic() {
-        String[][] testData = new String[][]
-                {    // - input                - filter - output
-                        {"Foxminded cool 24/7", "",     "dednimxoF looc 24/7"},
-                        {"abcd efgh",           "",     "dcba hgfe"},
-                        {"a1bcd efg!h",         "",     "d1cba hgf!e"},
 
-                        {"Foxminded cool 24/7", "xl",   "dexdnimoF oocl 7/42"},
-                        {"abcd efgh",           "xl",   "dcba hgfe"},
-                        {"a1bcd efg!h",         "xl",   "dcb1a h!gfe"},
-                };
-
-        for (String[] data : testData) {
-            onView(withId(R.id.textInputView)).perform(clearText()).perform(typeText(data[0]));
-            onView(withId(R.id.textFilterView)).perform(clearText()).perform(typeText(data[1]));
-            onView(withId(R.id.resultTextView)).check(matches(withText(data[2])));
+        for (int i = 1; i < numberOfTestData; i++) {
+            onView(withId(R.id.textInputView)).perform(clearText()).perform(typeText(input[i]));
+            onView(withId(R.id.textFilterView)).perform(clearText()).perform(typeText(filter[i]));
+            onView(withId(R.id.resultTextView)).check(matches(withText(output[i])));
         }
     }
 }
