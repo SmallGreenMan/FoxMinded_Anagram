@@ -56,4 +56,9 @@ public class UtilsTest {
         assertEquals("", createAnagram(null, ""));
     }
 
+    @Test(expected = NullPointerException.class)
+    public void anagramLogicWithException(){
+        assertEquals("", createAnagram("", null));
+    }
+
 }
